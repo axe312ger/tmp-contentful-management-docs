@@ -1,0 +1,341 @@
+<!DOCTYPE html><html class="default" lang="en" data-base="."><head><meta charset="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>contentful-management.js - v0.0.0-determined-by-semantic-release</title><meta name="description" content="Documentation for contentful-management.js"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><script defer src="assets/main.js"></script><script async src="assets/icons.js" id="tsd-icons-script"></script><script async src="assets/search.js" id="tsd-search-script"></script><script async src="assets/navigation.js" id="tsd-nav-script"></script><script async src="assets/hierarchy.js" id="tsd-hierarchy-script"></script><link rel="stylesheet" href="assets/typedoc-github-style.css"/></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os";document.body.style.display="none";setTimeout(() => app?app.showPage():document.body.style.removeProperty("display"),500)</script><header class="tsd-page-toolbar"><div class="tsd-toolbar-contents container"><div class="table-cell" id="tsd-search"><div class="field"><label for="tsd-search-field" class="tsd-widget tsd-toolbar-icon search no-caption"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-search"></use></svg></label><input type="text" id="tsd-search-field" aria-label="Search"/></div><div class="field"><div id="tsd-toolbar-links"></div></div><ul class="results"><li class="state loading">Preparing search index...</li><li class="state failure">The search index is not available</li></ul><a href="index.html" class="title">contentful-management.js - v0.0.0-determined-by-semantic-release</a></div><div class="table-cell" id="tsd-widgets"><a href="#" class="tsd-widget tsd-toolbar-icon menu no-caption" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-menu"></use></svg></a></div></div></header><div class="container container-main"><div class="col-content"><div class="tsd-page-title"><h1>contentful-management.js - v0.0.0-determined-by-semantic-release</h1></div><div class="tsd-panel tsd-typography"><!-- shared header  START -->
+<p align="center">
+  <a href="https://www.contentful.com/developers/docs/references/content-management-api/">
+    <img alt="Contentful Logo" title="Contentful" src="media/contentful-icon.png" width="150">
+  </a>
+</p>
+<h1 align='center'>Content Management API</h1>
+<h3 align="center">JavaScript</h3>
+<p align="center">
+  <a href="media/README.md">Readme</a> · 
+  <a href="media/SETUP.md">Setup</a> · 
+  <a href="media/CHANGELOG.md">Changelog</a> · 
+  <a href="media/CONTRIBUTING.md">Contributing</a>
+</p>
+<p align="center">
+  <a href="https://www.contentful.com/slack/">
+    <img src="https://img.shields.io/badge/-Join%20Community%20Slack-2AB27B.svg?logo=slack&maxAge=31557600" alt="Join Contentful Community Slack">
+  </a>
+</p>
+<!-- shared header  END -->
+<a id="introduction" class="tsd-anchor"></a><h2 class="tsd-anchor-link">Introduction<a href="#introduction" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p><a href="https://circleci.com/gh/contentful/contentful-management.js"><img src="https://circleci.com/gh/contentful/contentful-management.js.svg?style=svg" alt="Build Status"></a>
+<a href="https://www.npmjs.com/package/contentful-management"><img src="https://img.shields.io/npm/v/contentful-management.svg" alt="npm"></a>
+<a href="https://github.com/semantic-release/semantic-release"><img src="https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg" alt="semantic-release"></a>
+<a href="http://npm-stat.com/charts.html?package=contentful-management"><img src="https://img.shields.io/npm/dm/contentful-management.svg" alt="npm downloads"></a>
+<a href="https://unpkg.com/contentful-management/dist/contentful-management.browser.min.js"><img src="http://img.badgesize.io/https://unpkg.com/contentful-management/dist/contentful-management.browser.min.js?compression=gzip" alt="gzip bundle size"></a></p>
+<p><strong>What is Contentful?</strong></p>
+<p><a href="https://www.contentful.com">Contentful</a> provides a content infrastructure for digital teams to power content in websites, apps, and devices. Unlike a CMS, Contentful was built to integrate with the modern software stack. It offers a central hub for structured content, powerful management and delivery APIs, and a customizable web app that enable developers and content creators to ship digital products faster.</p>
+<details>
+<summary>Table of contents</summary>
+<!-- TOC -->
+<ul>
+<li><a href="#getting-started">Getting started</a>
+<ul>
+<li><a href="#installation">Installation</a>
+<ul>
+<li><a href="#node">Node:</a></li>
+<li><a href="#browser">Browser:</a></li>
+</ul>
+</li>
+<li><a href="#typings">Typings</a></li>
+<li><a href="#authentication">Authentication</a></li>
+<li><a href="#using-es6-import">Using ES6 import</a></li>
+<li><a href="#using-the-plain-client">Using the Plain Client</a>
+<ul>
+<li><a href="#with-scoped-space-and-environment">With scoped space and environment</a></li>
+</ul>
+</li>
+<li><a href="#using-the-legacy-client">Using the Legacy Client</a></li>
+<li><a href="#app-framework">App Framework</a></li>
+<li><a href="#troubleshooting">Troubleshooting</a></li>
+<li><a href="#documentationreferences">Documentation/References</a>
+<ul>
+<li><a href="#rest-api-reference-with-examples">REST API reference with examples</a></li>
+<li><a href="#reference-documentation">Reference documentation</a></li>
+<li><a href="#configuration">Configuration</a>
+<ul>
+<li><a href="#request-configuration-options">Request configuration options</a></li>
+</ul>
+</li>
+<li><a href="#tutorials--other-resources">Tutorials &amp; other resources</a></li>
+</ul>
+</li>
+<li><a href="#versioning">Versioning</a></li>
+<li><a href="#reach-out-to-us">Reach out to us</a>
+<ul>
+<li><a href="#you-have-questions-about-how-to-use-this-library">You have questions about how to use this library?</a></li>
+<li><a href="#you-found-a-bug-or-want-to-propose-a-feature">You found a bug or want to propose a feature?</a></li>
+<li><a href="#you-need-to-share-confidential-information-or-have-other-questions">You need to share confidential information or have other questions?</a></li>
+</ul>
+</li>
+<li><a href="#get-involved">Get involved</a></li>
+<li><a href="#license">License</a></li>
+<li><a href="#code-of-conduct">Code of Conduct</a></li>
+</ul>
+</li>
+</ul>
+<!-- /TOC -->
+</details>
+<a id="features" class="tsd-anchor"></a><h2 class="tsd-anchor-link">Features<a href="#features" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><ul>
+<li>Content management and retrieval through Contentful's <a href="https://www.contentful.com/developers/docs/references/content-management-api/">Content Management API</a>.</li>
+<li>Built in rate limiting with recovery procedures</li>
+<li>Asset processing helpers</li>
+<li>Two different types of clients:
+<ul>
+<li><a href="#using-the-plain-client">Plain Client</a></li>
+<li><a href="#using-the-legacy-client">Legacy Chainable Client </a></li>
+</ul>
+</li>
+</ul>
+<a id="supported-environments" class="tsd-anchor"></a><h2 class="tsd-anchor-link">Supported environments<a href="#supported-environments" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>Browsers and Node.js:</p>
+<ul>
+<li>Chrome</li>
+<li>Firefox</li>
+<li>Edge</li>
+<li>Safari</li>
+<li>node.js (LTS)</li>
+</ul>
+<p>Other browsers should also work, but at the moment we're only running automated tests on the browsers and Node.js versions specified above.</p>
+<a id="getting-started" class="tsd-anchor"></a><h1 class="tsd-anchor-link">Getting started<a href="#getting-started" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h1><p>To get started with the Contentful Management JS library you'll need to install it, and then get credentials which will allow you to access your content in Contentful.</p>
+<ul>
+<li><a href="#installation">Installation</a></li>
+<li><a href="#authentication">Authentication</a></li>
+<li><a href="#using-es6-import">Using ES6 import</a></li>
+<li><a href="#your-first-request">Your first request</a></li>
+<li><a href="#troubleshooting">Troubleshooting</a></li>
+<li><a href="#documentationreferences">Documentation/References</a></li>
+</ul>
+<a id="installation" class="tsd-anchor"></a><h2 class="tsd-anchor-link">Installation<a href="#installation" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><a id="node" class="tsd-anchor"></a><h3 class="tsd-anchor-link">Node:<a href="#node" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><p>Using <a href="http://npmjs.org">npm</a>:</p>
+<pre><code class="sh"><span class="hl-0">npm</span><span class="hl-1"> </span><span class="hl-2">install</span><span class="hl-1"> </span><span class="hl-2">contentful-management</span>
+</code><button type="button">Copy</button></pre>
+
+<p>Using <a href="https://yarnpkg.com/lang/en/">yarn</a>:</p>
+<pre><code class="sh"><span class="hl-0">yarn</span><span class="hl-1"> </span><span class="hl-2">add</span><span class="hl-1"> </span><span class="hl-2">contentful-management</span>
+</code><button type="button">Copy</button></pre>
+
+<a id="browser" class="tsd-anchor"></a><h3 class="tsd-anchor-link">Browser:<a href="#browser" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><p>For browsers, we recommend to download the library via npm or yarn to ensure 100% availability.</p>
+<p>If you'd like to use a standalone built file you can use the following script tag or download it from <a href="https://www.jsdelivr.com/package/npm/contentful-management">jsDelivr</a>, under the <code>dist</code> directory:</p>
+<pre><code class="html"><span class="hl-3">&lt;</span><span class="hl-4">script</span><span class="hl-5"> </span><span class="hl-6">src</span><span class="hl-5">=</span><span class="hl-7">&quot;https://cdn.jsdelivr.net/npm/contentful-management@latest/dist/contentful-management.browser.min.js&quot;</span><span class="hl-3">&gt;&lt;/</span><span class="hl-4">script</span><span class="hl-3">&gt;</span>
+</code><button type="button">Copy</button></pre>
+
+<p><strong>It's not recommended to use the above URL for production.</strong></p>
+<p>Using <code>contentful@latest</code> will always get you the latest version, but you can also specify a specific version number:</p>
+<pre><code class="html"><span class="hl-8">&lt;!-- Avoid using the following url for production. You can not rely on its availability. --&gt;</span><br/><span class="hl-3">&lt;</span><span class="hl-4">script</span><span class="hl-5"> </span><span class="hl-6">src</span><span class="hl-5">=</span><span class="hl-7">&quot;https://cdn.jsdelivr.net/npm/contentful-management@7.3.0/dist/contentful-management.browser.min.js&quot;</span><span class="hl-3">&gt;&lt;/</span><span class="hl-4">script</span><span class="hl-3">&gt;</span>
+</code><button type="button">Copy</button></pre>
+
+<p>The Contentful Management library will be accessible via the <code>contentfulManagement</code> global variable.</p>
+<p>Check the <a href="https://github.com/contentful/contentful-management.js/releases">releases</a> page to know which versions are available.</p>
+<a id="typings" class="tsd-anchor"></a><h2 class="tsd-anchor-link">Typings<a href="#typings" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>This library includes TypeScript typings out of the box.</p>
+<a id="authentication" class="tsd-anchor"></a><h2 class="tsd-anchor-link">Authentication<a href="#authentication" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>To get content from Contentful, an app should authenticate with an OAuth bearer token.</p>
+<p>If you want to use this library for a simple tool or a local app that you won't redistribute or make available to other users, you can get an API key for the Management API at our <a href="https://www.contentful.com/developers/docs/references/authentication/">Authentication page</a>.</p>
+<p>If you'd like to create an app which would make use of this library but that would be available for other users, where they could authenticate with their own Contentful credentials, make sure to also check out the section about <a href="https://www.contentful.com/developers/docs/references/authentication/#creating-an-oauth-20-application">Creating an OAuth Application</a></p>
+<a id="using-es6-import" class="tsd-anchor"></a><h2 class="tsd-anchor-link">Using ES6 import<a href="#using-es6-import" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>You can import the library using ES6 syntax as follows:</p>
+<pre><code class="js"><span class="hl-8">// import createClient directly</span><br/><span class="hl-9">import</span><span class="hl-1"> </span><span class="hl-10">contentful</span><span class="hl-1"> </span><span class="hl-9">from</span><span class="hl-1"> </span><span class="hl-2">&#39;contentful-management&#39;</span><br/><span class="hl-11">const</span><span class="hl-1"> </span><span class="hl-12">client</span><span class="hl-1"> = </span><span class="hl-10">contentful</span><span class="hl-1">.</span><span class="hl-0">createClient</span><span class="hl-1">(</span><br/><span class="hl-1">  {</span><br/><span class="hl-1">    </span><span class="hl-8">// This is the access token for this space. Normally you get the token in the Contentful web app</span><br/><span class="hl-1">    </span><span class="hl-10">accessToken:</span><span class="hl-1"> </span><span class="hl-2">&#39;YOUR_ACCESS_TOKEN&#39;</span><span class="hl-1">,</span><br/><span class="hl-1">  },</span><br/><span class="hl-1">  { </span><span class="hl-10">type:</span><span class="hl-1"> </span><span class="hl-2">&#39;plain&#39;</span><span class="hl-1"> }</span><br/><span class="hl-1">)</span><br/><span class="hl-8">//....</span>
+</code><button type="button">Copy</button></pre>
+
+<a id="using-the-plain-client" class="tsd-anchor"></a><h2 class="tsd-anchor-link">Using the Plain Client<a href="#using-the-plain-client" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>Beginning with <code>contentful-management@7</code> this library provides a client which exposes all CMA endpoints in a simple flat API surface, as opposed to the waterfall structure exposed by legacy versions of the SDK.</p>
+<pre><code class="javascript"><span class="hl-11">const</span><span class="hl-1"> </span><span class="hl-12">contentful</span><span class="hl-1"> = </span><span class="hl-0">require</span><span class="hl-1">(</span><span class="hl-2">&#39;contentful-management&#39;</span><span class="hl-1">)</span><br/><span class="hl-11">const</span><span class="hl-1"> </span><span class="hl-12">plainClient</span><span class="hl-1"> = </span><span class="hl-10">contentful</span><span class="hl-1">.</span><span class="hl-0">createClient</span><span class="hl-1">(</span><br/><span class="hl-1">  {</span><br/><span class="hl-1">    </span><span class="hl-10">accessToken:</span><span class="hl-1"> </span><span class="hl-2">&#39;YOUR_ACCESS_TOKEN&#39;</span><span class="hl-1">,</span><br/><span class="hl-1">  },</span><br/><span class="hl-1">  { </span><span class="hl-10">type:</span><span class="hl-1"> </span><span class="hl-2">&#39;plain&#39;</span><span class="hl-1"> }</span><br/><span class="hl-1">)</span><br/><br/><span class="hl-11">const</span><span class="hl-1"> </span><span class="hl-12">environment</span><span class="hl-1"> = </span><span class="hl-9">await</span><span class="hl-1"> </span><span class="hl-10">plainClient</span><span class="hl-1">.</span><span class="hl-10">environment</span><span class="hl-1">.</span><span class="hl-0">get</span><span class="hl-1">({</span><br/><span class="hl-1">  </span><span class="hl-10">spaceId:</span><span class="hl-1"> </span><span class="hl-2">&#39;&lt;space_id&gt;&#39;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-10">environmentId:</span><span class="hl-1"> </span><span class="hl-2">&#39;&lt;environment_id&gt;&#39;</span><span class="hl-1">,</span><br/><span class="hl-1">})</span><br/><br/><span class="hl-11">const</span><span class="hl-1"> </span><span class="hl-12">entries</span><span class="hl-1"> = </span><span class="hl-9">await</span><span class="hl-1"> </span><span class="hl-10">plainClient</span><span class="hl-1">.</span><span class="hl-10">entry</span><span class="hl-1">.</span><span class="hl-0">getMany</span><span class="hl-1">({</span><br/><span class="hl-1">  </span><span class="hl-10">spaceId:</span><span class="hl-1"> </span><span class="hl-2">&#39;123&#39;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-10">environmentId:</span><span class="hl-1"> </span><span class="hl-2">&#39;&#39;</span><span class="hl-1">,</span><br/><span class="hl-1">  </span><span class="hl-10">query:</span><span class="hl-1"> {</span><br/><span class="hl-1">    </span><span class="hl-10">skip:</span><span class="hl-1"> </span><span class="hl-13">10</span><span class="hl-1">,</span><br/><span class="hl-1">    </span><span class="hl-10">limit:</span><span class="hl-1"> </span><span class="hl-13">100</span><span class="hl-1">,</span><br/><span class="hl-1">  },</span><br/><span class="hl-1">})</span>
+</code><button type="button">Copy</button></pre>
+
+<a id="with-scoped-space-and-environment" class="tsd-anchor"></a><h3 class="tsd-anchor-link">With scoped space and environment<a href="#with-scoped-space-and-environment" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><pre><code class="javascript"><span class="hl-11">const</span><span class="hl-1"> </span><span class="hl-12">scopedPlainClient</span><span class="hl-1"> = </span><span class="hl-10">contentful</span><span class="hl-1">.</span><span class="hl-0">createClient</span><span class="hl-1">(</span><br/><span class="hl-1">  {</span><br/><span class="hl-1">    </span><span class="hl-10">accessToken:</span><span class="hl-1"> </span><span class="hl-2">&#39;YOUR_ACCESS_TOKEN&#39;</span><span class="hl-1">,</span><br/><span class="hl-1">  },</span><br/><span class="hl-1">  {</span><br/><span class="hl-1">    </span><span class="hl-10">type:</span><span class="hl-1"> </span><span class="hl-2">&#39;plain&#39;</span><span class="hl-1">,</span><br/><span class="hl-1">    </span><span class="hl-10">defaults:</span><span class="hl-1"> {</span><br/><span class="hl-1">      </span><span class="hl-10">spaceId:</span><span class="hl-1"> </span><span class="hl-2">&#39;&lt;space_id&gt;&#39;</span><span class="hl-1">,</span><br/><span class="hl-1">      </span><span class="hl-10">environmentId:</span><span class="hl-1"> </span><span class="hl-2">&#39;&lt;environment_id&gt;&#39;</span><span class="hl-1">,</span><br/><span class="hl-1">    },</span><br/><span class="hl-1">  }</span><br/><span class="hl-1">)</span><br/><br/><span class="hl-8">// entries from &#39;&lt;space_id&gt;&#39; &amp; &#39;&lt;environment_id&gt;&#39;</span><br/><span class="hl-11">const</span><span class="hl-1"> </span><span class="hl-12">entries</span><span class="hl-1"> = </span><span class="hl-9">await</span><span class="hl-1"> </span><span class="hl-10">scopedPlainClient</span><span class="hl-1">.</span><span class="hl-10">entry</span><span class="hl-1">.</span><span class="hl-0">getMany</span><span class="hl-1">({</span><br/><span class="hl-1">  </span><span class="hl-10">query:</span><span class="hl-1"> {</span><br/><span class="hl-1">    </span><span class="hl-10">skip:</span><span class="hl-1"> </span><span class="hl-13">10</span><span class="hl-1">,</span><br/><span class="hl-1">    </span><span class="hl-10">limit:</span><span class="hl-1"> </span><span class="hl-13">100</span><span class="hl-1">,</span><br/><span class="hl-1">  },</span><br/><span class="hl-1">})</span>
+</code><button type="button">Copy</button></pre>
+
+<p>You can try and change the above example on <a href="https://npm.runkit.com/contentful-management">Runkit</a>.</p>
+<p>The benefits of using the &quot;plain&quot; version of the client, over the legacy version, are:</p>
+<ul>
+<li>The ability to reach any possible CMA endpoint without the necessity to call any async functions beforehand.
+<ul>
+<li>It's especially important if you're using this CMA client for non-linear scripts (for example, a complex Front-end application)</li>
+</ul>
+</li>
+<li>All returned objects are simple Javascript objects without any wrappers. They can be easily serialized without an additional <code>toPlainObject</code> function call.</li>
+<li>The ability to scope CMA client instance to a specific <code>spaceId</code>, <code>environmentId</code>, and <code>organizationId</code> when initializing the client.
+<ul>
+<li>You can pass a concrete values to <code>defaults</code> and omit specifying these params in actual CMA methods calls.</li>
+</ul>
+</li>
+</ul>
+<a id="using-the-legacy-client" class="tsd-anchor"></a><h2 class="tsd-anchor-link">Using the Legacy Client<a href="#using-the-legacy-client" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>The following code snippet is an example of the legacy client interface, which reads and writes data as a sequence of nested requests:</p>
+<pre><code class="js"><span class="hl-11">const</span><span class="hl-1"> </span><span class="hl-12">contentful</span><span class="hl-1"> = </span><span class="hl-0">require</span><span class="hl-1">(</span><span class="hl-2">&#39;contentful-management&#39;</span><span class="hl-1">)</span><br/><span class="hl-11">const</span><span class="hl-1"> </span><span class="hl-12">client</span><span class="hl-1"> = </span><span class="hl-10">contentful</span><span class="hl-1">.</span><span class="hl-0">createClient</span><span class="hl-1">({</span><br/><span class="hl-1">  </span><span class="hl-10">accessToken:</span><span class="hl-1"> </span><span class="hl-2">&#39;YOUR_ACCESS_TOKEN&#39;</span><span class="hl-1">,</span><br/><span class="hl-1">})</span><br/><br/><span class="hl-8">// Get a space with the specified ID</span><br/><span class="hl-10">client</span><span class="hl-1">.</span><span class="hl-0">getSpace</span><span class="hl-1">(</span><span class="hl-2">&#39;spaceId&#39;</span><span class="hl-1">).</span><span class="hl-0">then</span><span class="hl-1">((</span><span class="hl-10">space</span><span class="hl-1">) </span><span class="hl-11">=&gt;</span><span class="hl-1"> {</span><br/><span class="hl-1">  </span><span class="hl-8">// Get an environment within the space</span><br/><span class="hl-1">  </span><span class="hl-10">space</span><span class="hl-1">.</span><span class="hl-0">getEnvironment</span><span class="hl-1">(</span><span class="hl-2">&#39;master&#39;</span><span class="hl-1">).</span><span class="hl-0">then</span><span class="hl-1">((</span><span class="hl-10">environment</span><span class="hl-1">) </span><span class="hl-11">=&gt;</span><span class="hl-1"> {</span><br/><span class="hl-1">    </span><span class="hl-8">// Get entries from this environment</span><br/><span class="hl-1">    </span><span class="hl-10">environment</span><span class="hl-1">.</span><span class="hl-0">getEntries</span><span class="hl-1">().</span><span class="hl-0">then</span><span class="hl-1">((</span><span class="hl-10">entries</span><span class="hl-1">) </span><span class="hl-11">=&gt;</span><span class="hl-1"> {</span><br/><span class="hl-1">      </span><span class="hl-10">console</span><span class="hl-1">.</span><span class="hl-0">log</span><span class="hl-1">(</span><span class="hl-10">entries</span><span class="hl-1">.</span><span class="hl-10">items</span><span class="hl-1">)</span><br/><span class="hl-1">    })</span><br/><span class="hl-1">    </span><span class="hl-8">// Get a content type</span><br/><span class="hl-1">    </span><span class="hl-10">environment</span><span class="hl-1">.</span><span class="hl-0">getContentType</span><span class="hl-1">(</span><span class="hl-2">&#39;product&#39;</span><span class="hl-1">).</span><span class="hl-0">then</span><span class="hl-1">((</span><span class="hl-10">contentType</span><span class="hl-1">) </span><span class="hl-11">=&gt;</span><span class="hl-1"> {</span><br/><span class="hl-1">      </span><span class="hl-8">// Update its name</span><br/><span class="hl-1">      </span><span class="hl-10">contentType</span><span class="hl-1">.</span><span class="hl-10">name</span><span class="hl-1"> = </span><span class="hl-2">&#39;New Product&#39;</span><br/><span class="hl-1">      </span><span class="hl-10">contentType</span><span class="hl-1">.</span><span class="hl-0">update</span><span class="hl-1">().</span><span class="hl-0">then</span><span class="hl-1">((</span><span class="hl-10">updatedContentType</span><span class="hl-1">) </span><span class="hl-11">=&gt;</span><span class="hl-1"> {</span><br/><span class="hl-1">        </span><span class="hl-10">console</span><span class="hl-1">.</span><span class="hl-0">log</span><span class="hl-1">(</span><span class="hl-2">&#39;Update was successful&#39;</span><span class="hl-1">)</span><br/><span class="hl-1">      })</span><br/><span class="hl-1">    })</span><br/><span class="hl-1">  })</span><br/><span class="hl-1">})</span>
+</code><button type="button">Copy</button></pre>
+
+<a id="app-framework" class="tsd-anchor"></a><h2 class="tsd-anchor-link">App Framework<a href="#app-framework" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>Starting <a href="https://github.com/contentful/app-sdk"><code>@contentful/app-sdk@4</code></a> you can use this client to make requests
+from your <a href="https://www.contentful.com/developers/docs/extensibility/app-framework/">apps built for Contentful</a>.</p>
+<p>A dedicated <a href="https://github.com/contentful/contentful-management.js/blob/2350b47053459694b21b19c71025632fe57815cc/lib/common-types.ts#L493-L495">Adapter</a>
+grants your apps access to the supported space-environment scoped entities without compromising on security as you won't
+need to expose a management token, and without coding any additional backend middleware.</p>
+<pre><code class="javascript"><span class="hl-11">const</span><span class="hl-1"> </span><span class="hl-12">contentfulApp</span><span class="hl-1"> = </span><span class="hl-0">require</span><span class="hl-1">(</span><span class="hl-2">&#39;@contentful/app-sdk&#39;</span><span class="hl-1">)</span><br/><span class="hl-11">const</span><span class="hl-1"> </span><span class="hl-12">contentful</span><span class="hl-1"> = </span><span class="hl-0">require</span><span class="hl-1">(</span><span class="hl-2">&#39;contentful-management&#39;</span><span class="hl-1">)</span><br/><br/><span class="hl-10">contentfulApp</span><span class="hl-1">.</span><span class="hl-0">init</span><span class="hl-1">((</span><span class="hl-10">sdk</span><span class="hl-1">) </span><span class="hl-11">=&gt;</span><span class="hl-1"> {</span><br/><span class="hl-1">  </span><span class="hl-11">const</span><span class="hl-1"> </span><span class="hl-12">cma</span><span class="hl-1"> = </span><span class="hl-10">contentful</span><span class="hl-1">.</span><span class="hl-0">createClient</span><span class="hl-1">(</span><br/><span class="hl-1">    { </span><span class="hl-10">apiAdapter:</span><span class="hl-1"> </span><span class="hl-10">sdk</span><span class="hl-1">.</span><span class="hl-10">cmaAdapter</span><span class="hl-1"> },</span><br/><span class="hl-1">    {</span><br/><span class="hl-1">      </span><span class="hl-10">type:</span><span class="hl-1"> </span><span class="hl-2">&#39;plain&#39;</span><span class="hl-1">,</span><br/><span class="hl-1">      </span><span class="hl-10">defaults:</span><span class="hl-1"> {</span><br/><span class="hl-1">        </span><span class="hl-10">environmentId:</span><span class="hl-1"> </span><span class="hl-10">sdk</span><span class="hl-1">.</span><span class="hl-10">ids</span><span class="hl-1">.</span><span class="hl-10">environmentAlias</span><span class="hl-1"> ?? </span><span class="hl-10">sdk</span><span class="hl-1">.</span><span class="hl-10">ids</span><span class="hl-1">.</span><span class="hl-10">environment</span><span class="hl-1">,</span><br/><span class="hl-1">        </span><span class="hl-10">spaceId:</span><span class="hl-1"> </span><span class="hl-10">sdk</span><span class="hl-1">.</span><span class="hl-10">ids</span><span class="hl-1">.</span><span class="hl-10">space</span><span class="hl-1">,</span><br/><span class="hl-1">      },</span><br/><span class="hl-1">    }</span><br/><span class="hl-1">  )</span><br/><br/><span class="hl-1">  </span><span class="hl-8">// ...rest of initialization code</span><br/><span class="hl-1">})</span>
+</code><button type="button">Copy</button></pre>
+
+<blockquote>
+<p><strong>Please Note</strong></p>
+<p>Requests issued by the App SDK adapter will count towards the same rate limiting quota as the ones made by other APIs
+exposed by App SDK (e.g., Space API). Ultimately, they will all fall into the same bucket as the calls performed by
+the host app (i.e., Contentful web app, Compose, or Launch).</p>
+</blockquote>
+<a id="troubleshooting" class="tsd-anchor"></a><h2 class="tsd-anchor-link">Troubleshooting<a href="#troubleshooting" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><ul>
+<li><strong>I can't Install the package via npm</strong> - Check your internet connection - It is called <code>contentful-management</code> and not <code>contenful-management</code> ¯\_(ツ)_/¯</li>
+<li><strong>Can I use the library in react native projects</strong> - Yes it is possible</li>
+<li><strong>I get the error: Unable to resolve module <code>http</code></strong> - Our library is supplied as node and browser version. Most non-node environments, like React Native, act like a browser. To force using of the browser version, you can require it via: <code>const { createClient } = require('contentful-management/dist/contentful-management.browser.min.js')</code></li>
+<li><strong>I am not sure what payload to send when creating and entity (Asset/Entity/ContentType etc...)</strong> - Check the Content Management API <a href="https://www.contentful.com/developers/docs/references/content-management-api/">docs</a> or the examples in the reference <a href="https://contentful.github.io/contentful-management.js">docs</a> - Feel free to open an issue if you didn't find what you need in the above links</li>
+<li>😱 <strong>something is wrong what should I do</strong> - If it is a bug related to the code create a GitHub issue and make sure to remove any credential for your code before sharing it. - If you need to share your credentials, for example you have an issue with your space, please create a support ticket. - Please <strong>do not</strong> share your management token in a GitHub issue</li>
+</ul>
+<a id="documentationreferences" class="tsd-anchor"></a><h2 class="tsd-anchor-link">Documentation/References<a href="#documentationreferences" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>To help you get the most out of this library, we've prepared full client configuration options, reference documentation, tutorials, and other examples to help you learn and understand how to use this library effectively.</p>
+<ul>
+<li><a href="#rest-api-reference-with-examples">REST API reference with examples</a></li>
+<li><a href="#configuration">Configuration</a></li>
+<li><a href="#reference-documentation">Reference documentation</a></li>
+<li><a href="#tutorials--other-resources">Tutorials &amp; other resources</a></li>
+</ul>
+<a id="rest-api-reference-with-examples" class="tsd-anchor"></a><h3 class="tsd-anchor-link">REST API reference with examples<a href="#rest-api-reference-with-examples" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><p>This library is a wrapper around the <a href="https://www.contentful.com/developers/docs/references/content-management-api/">Contentful Management REST API</a>.</p>
+<p>You can use the API reference to find full, copy-paste-ready examples for both the <strong>plain</strong> and <strong>legacy</strong> clients of this library.<br>
+<a href="https://www.contentful.com/developers/docs/references/content-management-api/#/reference/entries/entry">For example, here’s how to create, update, publish, or fetch an entry</a>.</p>
+<p>It’s your go-to resource for:</p>
+<ul>
+<li>Quickly grabbing example snippets for specific operations in the Contentful Management API</li>
+<li>Complete and detailed endpoint descriptions</li>
+<li>Previewing request and response payloads</li>
+<li>Understanding query filters and pagination</li>
+</ul>
+<a id="reference-documentation" class="tsd-anchor"></a><h3 class="tsd-anchor-link">Reference documentation<a href="#reference-documentation" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><p>The <a href="https://contentful.github.io/contentful-management.js">Contentful JS SDK TypeDoc reference</a> documents all exported objects, types, functions, and instance methods.</p>
+<blockquote>
+<p>From version <code>1.0.0</code> onward, access version-specific docs at<br>
+<code>https://contentful.github.io/contentful-management.js/contentful-management/&lt;VERSION&gt;</code></p>
+</blockquote>
+<hr>
+<a id="configuration" class="tsd-anchor"></a><h3 class="tsd-anchor-link">Configuration<a href="#configuration" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><p>The <code>createClient</code> method accepts several options to configure the client behavior:</p>
+<pre><code class="js"><span class="hl-10">contentful</span><span class="hl-1">.</span><span class="hl-0">createClient</span><span class="hl-1">({</span><br/><span class="hl-1">  ...</span><span class="hl-10">your</span><span class="hl-1"> </span><span class="hl-10">config</span><span class="hl-1"> </span><span class="hl-10">here</span><span class="hl-1">...</span><br/><span class="hl-1">})</span>
+</code><button type="button">Copy</button></pre>
+
+<pre><code class="js"><span class="hl-8">// The plain client accepts the same configuration options</span><br/><span class="hl-10">contentful</span><span class="hl-1">.</span><span class="hl-0">createClient</span><span class="hl-1">(</span><br/><span class="hl-1">  {</span><br/><span class="hl-1">   ...</span><span class="hl-10">your</span><span class="hl-1"> </span><span class="hl-10">config</span><span class="hl-1"> </span><span class="hl-10">here</span><span class="hl-1">...</span><br/><span class="hl-1">  },</span><br/><span class="hl-1">  { </span><span class="hl-10">type:</span><span class="hl-1"> </span><span class="hl-2">&#39;plain&#39;</span><span class="hl-1"> }</span><br/><span class="hl-1">)</span>
+</code><button type="button">Copy</button></pre>
+
+<a id="request-configuration-options" class="tsd-anchor"></a><h4 class="tsd-anchor-link">Request configuration options<a href="#request-configuration-options" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h4><table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>accessToken</code></td>
+<td></td>
+<td><strong>Required</strong> (unless using <code>apiAdapter</code>). Your CMA access token.</td>
+</tr>
+<tr>
+<td><code>host</code></td>
+<td><code>'api.contentful.com'</code></td>
+<td>The base host used for API requests.</td>
+</tr>
+<tr>
+<td><code>hostUpload</code></td>
+<td><code>'upload.contentful.com'</code></td>
+<td>The host used for upload-related API requests.</td>
+</tr>
+<tr>
+<td><code>basePath</code></td>
+<td><code>''</code></td>
+<td>Appended to the host. Useful for custom gateways/proxies like <code>https://gateway.example.com/contentful/</code>.</td>
+</tr>
+<tr>
+<td><code>httpAgent</code></td>
+<td><code>undefined</code></td>
+<td>Custom HTTP agent. See <a href="https://github.com/axios/axios#request-config">Axios request config</a>.</td>
+</tr>
+<tr>
+<td><code>httpsAgent</code></td>
+<td><code>undefined</code></td>
+<td>Custom HTTPS agent. See <a href="https://github.com/axios/axios#request-config">Axios request config</a>.</td>
+</tr>
+<tr>
+<td><code>headers</code></td>
+<td><code>{}</code></td>
+<td>Additional headers for all requests. The SDK automatically sets:<br>• <code>Content-Type: application/vnd.contentful.management.v1+json</code><br>• <code>X-Contentful-User-Agent: sdk contentful-management.js/x.y.z; platform ...; os ...</code></td>
+</tr>
+<tr>
+<td><code>proxy</code></td>
+<td><code>undefined</code></td>
+<td>Axios proxy configuration. See <a href="https://github.com/axios/axios#request-config">Axios request config</a>.</td>
+</tr>
+<tr>
+<td><code>retryOnError</code></td>
+<td><code>true</code></td>
+<td>Retries requests on <code>500</code> or <code>429</code> responses. Set to <code>false</code> to disable retry behavior.</td>
+</tr>
+<tr>
+<td><code>throttle</code></td>
+<td><code>0</code></td>
+<td>Max requests per second:<br>• Fixed: <code>1</code>–<code>30</code><br>• <code>'auto'</code>: based on your plan<br>• <code>'0%'</code>–<code>'100%'</code>: percentage-based rate based on plan limit</td>
+</tr>
+<tr>
+<td><code>application</code></td>
+<td><code>undefined</code></td>
+<td>Custom application identifier, e.g. <code>'myApp/version'</code>. Added to the <code>X-Contentful-User-Agent</code> header.</td>
+</tr>
+<tr>
+<td><code>integration</code></td>
+<td><code>undefined</code></td>
+<td>Custom integration identifier, e.g. <code>'react/version'</code>. Added to the <code>X-Contentful-User-Agent</code> header.</td>
+</tr>
+<tr>
+<td><code>timeout</code></td>
+<td><code>30000</code></td>
+<td>Timeout in milliseconds for requests.</td>
+</tr>
+<tr>
+<td><code>retryLimit</code></td>
+<td><code>5</code></td>
+<td>Maximum number of retry attempts for recoverable errors.</td>
+</tr>
+<tr>
+<td><code>logHandler</code></td>
+<td><code>function (level, data) {}</code></td>
+<td>Custom log handler for SDK logs (errors, warnings, info). Defaults to console logging.</td>
+</tr>
+<tr>
+<td><code>requestLogger</code></td>
+<td><code>function (config) {}</code></td>
+<td>Called before each request. Receives the Axios request config. No-op by default.</td>
+</tr>
+<tr>
+<td><code>responseLogger</code></td>
+<td><code>function (response) {}</code></td>
+<td>Called after each response. Receives the Axios response object. No-op by default.</td>
+</tr>
+<tr>
+<td><code>apiAdapter</code></td>
+<td><code>new RestAdapter(configuration)</code></td>
+<td>Custom adapter that overrides request handling.<br>👉 <a href="https://github.com/contentful/contentful-management.js/blob/b50534c629a8ddc81637170a07bc63477d136cec/lib/adapters/REST/rest-adapter.ts">View adapter source</a><br><br><strong>Note</strong>: Takes full control of requests. Must handle headers, host, and auth internally.</td>
+</tr>
+</tbody>
+</table>
+<a id="tutorials--other-resources" class="tsd-anchor"></a><h3 class="tsd-anchor-link">Tutorials &amp; other resources<a href="#tutorials--other-resources" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><p>Check out the <a href="https://www.contentful.com/developers/docs/javascript/">Contentful for JavaScript</a> page for:</p>
+<ul>
+<li>Hands-on tutorials</li>
+<li>Example applications</li>
+<li>Integration guides for frameworks and tools</li>
+</ul>
+<a id="versioning" class="tsd-anchor"></a><h2 class="tsd-anchor-link">Versioning<a href="#versioning" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>This project strictly follows <a href="http://semver.org/">Semantic Versioning</a> by use of <a href="https://github.com/semantic-release/semantic-release">semantic-release</a>.</p>
+<p>This means that new versions are released automatically as fixes, features or breaking changes are released.</p>
+<p>You can check the changelog on the <a href="https://github.com/contentful/contentful-management.js/releases">releases</a> page.</p>
+<a id="reach-out-to-us" class="tsd-anchor"></a><h2 class="tsd-anchor-link">Reach out to us<a href="#reach-out-to-us" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><a id="you-have-questions-about-how-to-use-this-library" class="tsd-anchor"></a><h3 class="tsd-anchor-link">You have questions about how to use this library?<a href="#you-have-questions-about-how-to-use-this-library" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li>Reach out to our community
+forum: <a href="https://support.contentful.com/"><img src="https://img.shields.io/badge/-Join%20Community%20Forum-3AB2E6.svg?logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MiA1OSI+CiAgPHBhdGggZmlsbD0iI0Y4RTQxOCIgZD0iTTE4IDQxYTE2IDE2IDAgMCAxIDAtMjMgNiA2IDAgMCAwLTktOSAyOSAyOSAwIDAgMCAwIDQxIDYgNiAwIDEgMCA5LTkiIG1hc2s9InVybCgjYikiLz4KICA8cGF0aCBmaWxsPSIjNTZBRUQyIiBkPSJNMTggMThhMTYgMTYgMCAwIDEgMjMgMCA2IDYgMCAxIDAgOS05QTI5IDI5IDAgMCAwIDkgOWE2IDYgMCAwIDAgOSA5Ii8+CiAgPHBhdGggZmlsbD0iI0UwNTM0RSIgZD0iTTQxIDQxYTE2IDE2IDAgMCAxLTIzIDAgNiA2IDAgMSAwLTkgOSAyOSAyOSAwIDAgMCA0MSAwIDYgNiAwIDAgMC05LTkiLz4KICA8cGF0aCBmaWxsPSIjMUQ3OEE0IiBkPSJNMTggMThhNiA2IDAgMSAxLTktOSA2IDYgMCAwIDEgOSA5Ii8+CiAgPHBhdGggZmlsbD0iI0JFNDMzQiIgZD0iTTE4IDUwYTYgNiAwIDEgMS05LTkgNiA2IDAgMCAxIDkgOSIvPgo8L3N2Zz4K&amp;maxAge=31557600" alt="Contentful Community Forum"></a></li>
+<li>Jump into our community slack
+channel: <a href="https://www.contentful.com/slack/"><img src="https://img.shields.io/badge/-Join%20Community%20Slack-2AB27B.svg?logo=slack&amp;maxAge=31557600" alt="Contentful Community Slack"></a></li>
+</ul>
+<a id="you-found-a-bug-or-want-to-propose-a-feature" class="tsd-anchor"></a><h3 class="tsd-anchor-link">You found a bug or want to propose a feature?<a href="#you-found-a-bug-or-want-to-propose-a-feature" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li>File an issue here on GitHub: <a href="https://github.com/contentful/contentful-management.js/issues/new"><img src="https://img.shields.io/badge/-Create%20Issue-6cc644.svg?logo=github&amp;maxAge=31557600" alt="File an issue"></a>.
+Make sure to remove any credential from your code before sharing it.</li>
+</ul>
+<a id="you-need-to-share-confidential-information-or-have-other-questions" class="tsd-anchor"></a><h3 class="tsd-anchor-link">You need to share confidential information or have other questions?<a href="#you-need-to-share-confidential-information-or-have-other-questions" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><ul>
+<li>File a support ticket at our Contentful Customer
+Support: <a href="https://www.contentful.com/support/"><img src="https://img.shields.io/badge/-Submit%20Support%20Ticket-3AB2E6.svg?logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MiA1OSI+CiAgPHBhdGggZmlsbD0iI0Y4RTQxOCIgZD0iTTE4IDQxYTE2IDE2IDAgMCAxIDAtMjMgNiA2IDAgMCAwLTktOSAyOSAyOSAwIDAgMCAwIDQxIDYgNiAwIDEgMCA5LTkiIG1hc2s9InVybCgjYikiLz4KICA8cGF0aCBmaWxsPSIjNTZBRUQyIiBkPSJNMTggMThhMTYgMTYgMCAwIDEgMjMgMCA2IDYgMCAxIDAgOS05QTI5IDI5IDAgMCAwIDkgOWE2IDYgMCAwIDAgOSA5Ii8+CiAgPHBhdGggZmlsbD0iI0UwNTM0RSIgZD0iTTQxIDQxYTE2IDE2IDAgMCAxLTIzIDAgNiA2IDAgMSAwLTkgOSAyOSAyOSAwIDAgMCA0MSAwIDYgNiAwIDAgMC05LTkiLz4KICA8cGF0aCBmaWxsPSIjMUQ3OEE0IiBkPSJNMTggMThhNiA2IDAgMSAxLTktOSA2IDYgMCAwIDEgOSA5Ii8+CiAgPHBhdGggZmlsbD0iI0JFNDMzQiIgZD0iTTE4IDUwYTYgNiAwIDEgMS05LTkgNiA2IDAgMCAxIDkgOSIvPgo8L3N2Zz4K&amp;maxAge=31557600" alt="File support ticket"></a></li>
+</ul>
+<a id="get-involved" class="tsd-anchor"></a><h2 class="tsd-anchor-link">Get involved<a href="#get-involved" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>We appreciate any help on our repositories. For more details about how to contribute see our <a href="https://github.com/contentful/contentful-management.js/blob/master/CONTRIBUTING.md">CONTRIBUTING.md</a> document.</p>
+<a id="license" class="tsd-anchor"></a><h2 class="tsd-anchor-link">License<a href="#license" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>This repository is published under the <a href="media/LICENSE">MIT</a> license.</p>
+<a id="code-of-conduct" class="tsd-anchor"></a><h2 class="tsd-anchor-link">Code of Conduct<a href="#code-of-conduct" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>We want to provide a safe, inclusive, welcoming, and harassment-free space and experience for all participants, regardless of gender identity and expression, sexual orientation, disability, physical appearance, socioeconomic status, body size, ethnicity, nationality, level of experience, age, religion (or lack thereof), or other identity markers.</p>
+<p><a href="https://www.contentful.com/developers/code-of-conduct/">Read our full Code of Conduct</a>.</p>
+</div></div><div class="col-sidebar"><div class="page-menu"><div class="tsd-navigation settings"><details class="tsd-accordion"><summary class="tsd-accordion-summary"><h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-chevronDown"></use></svg>Settings</h3></summary><div class="tsd-accordion-details"><div class="tsd-filter-visibility"><span class="settings-label">Member Visibility</span><ul id="tsd-filter-options"><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-protected" name="protected"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Protected</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-private" name="private"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Private</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-external" name="external"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>External</span></label></li></ul></div><div class="tsd-theme-toggle"><label class="settings-label" for="tsd-theme">Theme</label><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div><details open class="tsd-accordion tsd-page-navigation"><summary class="tsd-accordion-summary"><h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><use href="assets/icons.svg#icon-chevronDown"></use></svg>On This Page</h3></summary><div class="tsd-accordion-details"><ul><li><a href="#introduction"><span>Introduction</span></a></li><li><a href="#features"><span>Features</span></a></li><li><a href="#supported-environments"><span>Supported environments</span></a></li></ul><a href="#getting-started"><span>Getting started</span></a><ul><li><a href="#installation"><span>Installation</span></a></li><li><ul><li><a href="#node"><span>Node:</span></a></li><li><a href="#browser"><span>Browser:</span></a></li></ul></li><li><a href="#typings"><span>Typings</span></a></li><li><a href="#authentication"><span>Authentication</span></a></li><li><a href="#using-es6-import"><span>Using ES6 import</span></a></li><li><a href="#using-the-plain-client"><span>Using the <wbr/>Plain <wbr/>Client</span></a></li><li><ul><li><a href="#with-scoped-space-and-environment"><span>With scoped space and environment</span></a></li></ul></li><li><a href="#using-the-legacy-client"><span>Using the <wbr/>Legacy <wbr/>Client</span></a></li><li><a href="#app-framework"><span>App <wbr/>Framework</span></a></li><li><a href="#troubleshooting"><span>Troubleshooting</span></a></li><li><a href="#documentationreferences"><span>Documentation/<wbr/>References</span></a></li><li><ul><li><a href="#rest-api-reference-with-examples"><span>REST API reference with examples</span></a></li><li><a href="#reference-documentation"><span>Reference documentation</span></a></li><li><a href="#configuration"><span>Configuration</span></a></li><li><ul><li><a href="#request-configuration-options"><span>Request configuration options</span></a></li></ul></li><li><a href="#tutorials--other-resources"><span>Tutorials &amp; other resources</span></a></li></ul></li><li><a href="#versioning"><span>Versioning</span></a></li><li><a href="#reach-out-to-us"><span>Reach out to us</span></a></li><li><ul><li><a href="#you-have-questions-about-how-to-use-this-library"><span>You have questions about how to use this library?</span></a></li><li><a href="#you-found-a-bug-or-want-to-propose-a-feature"><span>You found a bug or want to propose a feature?</span></a></li><li><a href="#you-need-to-share-confidential-information-or-have-other-questions"><span>You need to share confidential information or have other questions?</span></a></li></ul></li><li><a href="#get-involved"><span>Get involved</span></a></li><li><a href="#license"><span>License</span></a></li><li><a href="#code-of-conduct"><span>Code of <wbr/>Conduct</span></a></li></ul></div></details></div><div class="site-menu"><nav class="tsd-navigation"><a href="modules.html">contentful-management.js - v0.0.0-determined-by-semantic-release</a><ul class="tsd-small-nested-navigation" id="tsd-nav-container"><li>Loading...</li></ul></nav></div></div></div><footer></footer><div class="overlay"></div></body></html>
